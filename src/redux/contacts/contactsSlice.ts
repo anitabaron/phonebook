@@ -1,7 +1,8 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { addContact, deleteContact, fetchContacts } from "./operations";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { addContact, deleteContact, fetchContacts } from './operations';
+import type { RootState } from '../store';
 
-const handlePending = (state) => {
+const handlePending = (state: RootState) => {
   state.contacts.loading = true;
 };
 const handleRejected = (state, action) => {
@@ -10,7 +11,7 @@ const handleRejected = (state, action) => {
 };
 
 const contactsSlice = createSlice({
-  name: "contacts",
+  name: 'contacts',
   initialState: {
     contacts: {
       items: [],

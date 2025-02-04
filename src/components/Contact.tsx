@@ -1,7 +1,6 @@
-import { useDispatch } from 'react-redux';
-import styles from './Contact.module.css';
-import { deleteContact } from '../redux/contacts/operations';
-import { AppDispatch } from '../redux/store';
+import styles from "./ContactForm.module.css";
+import { deleteContact } from "../redux/contacts/operations";
+import { useAppDispatch } from "../redux/hooks/useDispatch";
 
 interface ContactProps {
   id: string;
@@ -9,8 +8,8 @@ interface ContactProps {
   number: string;
 }
 
-const Contact: React.FC<ContactProps> = ({ id, name, number }) => {
-  const dispatch: AppDispatch = useDispatch();
+const Contact = ({ id, name, number }: ContactProps): JSX.Element => {
+  const dispatch = useAppDispatch();
   const handleDelete = () => dispatch(deleteContact(id));
 
   return (

@@ -1,19 +1,18 @@
-import React from 'react';
-import { StrictMode } from 'react';
-import App from './App';
-import './index.css';
-import { Provider } from 'react-redux';
-import ReactDOM from 'react-dom/client';
-import { persistor, store } from './redux/store';
-import { BrowserRouter } from 'react-router-dom';
-import { PersistGate } from 'redux-persist/integration/react';
-import { HelmetProvider } from 'react-helmet-async';
-import { Toaster } from 'react-hot-toast';
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+import { StrictMode } from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { PersistGate } from "redux-persist/integration/react";
+import { HelmetProvider } from "react-helmet-async";
+import { Toaster } from "react-hot-toast";
+import { persistor, store } from "./redux/store";
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 
 if (!rootElement) {
-  throw new Error('Root element not found. Check your index.html.');
+  throw new Error("Root element not found. Check your index.html.");
 }
 
 const root = ReactDOM.createRoot(rootElement as HTMLElement);
