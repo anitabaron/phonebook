@@ -1,6 +1,6 @@
-import styles from "./SearchBox.module.css";
+import styles from "@css/SearchBox.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter } from "../redux/filters/filtersSlice";
+import { setNameFilter, setNumberFilter } from "../redux/filters/filtersSlice";
 import { useId } from "react";
 import { selectFilter } from "../redux/filters/selectors";
 
@@ -9,7 +9,7 @@ const SearchBox = () => {
   const filter = useSelector(selectFilter);
   const searchFieldId = useId();
   const handleFilterChange = (e) => {
-    dispatch(setFilter(e.target.value.toLowerCase()));
+    dispatch(setNameFilter(e.target.value.toLowerCase()));
     console.log("filter: ", e.target.value);
   };
   return (

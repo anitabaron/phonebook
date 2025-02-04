@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 axios.defaults.baseURL = "https://connections-api.goit.global/";
 
-const setAuthHeader = (token) => {
+const setAuthHeader = (token: string) => {
   console.log("Setting token:", token);
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -22,7 +22,8 @@ export const register = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      const error = e as Error;
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -36,7 +37,8 @@ export const logIn = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      const error = e as Error;
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -46,14 +48,16 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
     await axios.post("/users/logout");
     clearAuthHeader();
   } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+    const error = e as Error;
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 
 export const refreshUser = createAsyncThunk(
   "auth/refreshUser",
   async (_, thunkAPI) => {
-    const persistToken = thunkAPI.getState().auth.token;
+    const state = thunkAPI.getState() as { auth: { token: string } };
+    const persistToken = state.auth.token;
 
     if (!persistToken) {
       return thunkAPI.rejectWithValue("No token available");
@@ -63,10 +67,11 @@ export const refreshUser = createAsyncThunk(
       const response = await axios.get("/users/current");
       return response.data;
     } catch (e) {
-      if (e.response && e.response.status === 401) {
+      const error = e as AxiosError;
+      if (error.response && error.response.status === 401) {
         clearAuthHeader();
-        return thunkAPI.rejectWithValue(e.message);
       }
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

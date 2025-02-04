@@ -1,7 +1,11 @@
 import { Suspense } from "react";
 import Navigation from "./Navigation";
 
-export default function Layout({ children }) {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
   return (
     <div>
       <Navigation />

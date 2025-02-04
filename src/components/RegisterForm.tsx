@@ -3,7 +3,7 @@ import { register } from "../redux/auth/operations";
 import { useDispatch } from "react-redux";
 import { useId } from "react";
 import * as Yup from "yup";
-import styles from "./LoginForm.module.css";
+import styles from "@css/LoginForm.module.css";
 
 export default function RegisterForm() {
   const dispatch = useDispatch();

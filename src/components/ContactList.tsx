@@ -1,12 +1,17 @@
-import styles from "./ContactList.module.css";
+import styles from "@css/ContactList.module.css";
 import Contact from "./Contact";
 import { useSelector } from "react-redux";
 import { selectContacts } from "../redux/contacts/selectors";
 import { selectFilter } from "../redux/filters/selectors";
 
-const ContactList = () => {
-  const contacts = useSelector(selectContacts);
+interface ContactType {
+  id: string;
+  name: string;
+  number: string;
+}
 
+const ContactList = () => {
+  const contacts = useSelector(selectContacts) as ContactType[];
   const statusFilter = useSelector(selectFilter);
 
   const filteredContacts = (contacts || []).filter(
@@ -17,7 +22,7 @@ const ContactList = () => {
 
   return (
     <>
-      <h2>ContactList:</h2>
+      <h2>Contact List:</h2>
       {filteredContacts.length !== 0 ? (
         <div className={styles.phoneList}>
           {filteredContacts.map((contact) => (
@@ -30,7 +35,7 @@ const ContactList = () => {
           ))}
         </div>
       ) : (
-        <p>Sorry, there are no results.</p>
+        <p>No contacts found</p>
       )}
     </>
   );

@@ -1,4 +1,4 @@
-import styles from "./ContactForm.module.css";
+import styles from "@css/ContactForm.module.css";
 import { deleteContact } from "../redux/contacts/operations";
 import { useAppDispatch } from "../redux/hooks/useDispatch";
 
