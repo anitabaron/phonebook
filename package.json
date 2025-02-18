@@ -2,9 +2,10 @@
   "name": "vite-react-redux-typescript",
   "version": "0.0.0",
   "type": "module",
+  "author": "Anita_Baron <anita.baron.it@gmail.com>",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && npx --yes cpy index.html dist/",
+    "build": "tsc && vite build && npx --yes cpy-cli index.html ./dist",
     "lint": "eslint . --ext .ts,.tsx",
     "preview": "vite preview",
     "start": "npx http-server ./dist -p 8080 -c-1 --fallback=index.html"

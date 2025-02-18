@@ -4,7 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
-  base: "",
+  base: "./",
   build: {
     outDir: "dist",
     assetsDir: "assets",
@@ -19,5 +19,5 @@ export default defineConfig({
   preview: {
     port: 8080,
   },
-  publicDir: "public",
+  publicDir: false,
 });
