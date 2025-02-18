@@ -3,5 +3,5 @@
   "installCommand": "npm install",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "routes": [{ "src": "/(.*)", "dest": "/dist/index.html" }]
+  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
 }

@@ -7,7 +7,7 @@ export default defineConfig({
   base: "./",
   build: {
     outDir: "dist",
-    assetsDir: "assets",
+    // assetsDir: "assets",
     emptyOutDir: true,
     rollupOptions: {
       input: "index.html",
