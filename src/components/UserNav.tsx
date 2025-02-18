@@ -6,12 +6,13 @@ export default function UserNav() {
   const dispatch = useDispatch();
   const userName = useSelector(selectUser);
   const handleLogout = () => {
-    dispatch(logOut());
+    // dispatch(logOut());
   };
   return (
     <>
       <div>
-        Welcome <b>{userName.name}</b>
+        Welcome
+        {/* <b>{userName.name}</b> */}
       </div>
       <button onClick={handleLogout}>Logout</button>
     </>

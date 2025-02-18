@@ -1,23 +1,23 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
-import { fileURLToPath } from "url";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
+  base: "",
   build: {
-    sourcemap: true,
-  },
-  resolve: {
-    alias: {
-      "@components": path.resolve(__dirname, "src/components"),
-      "@css": path.resolve(__dirname, "src/css"),
-      "@pages": path.resolve(__dirname, "src/pages"),
-      "@redux": path.resolve(__dirname, "src/redux"),
+    outDir: "dist",
+    assetsDir: "assets",
+    emptyOutDir: true,
+    rollupOptions: {
+      input: "index.html",
     },
   },
+  server: {
+    port: 3000,
+  },
+  preview: {
+    port: 8080,
+  },
+  publicDir: "public",
 });
