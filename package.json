@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && copy index.html dist\\index.html",
+    "build": "tsc && vite build && npx --yes cpy index.html dist/",
     "lint": "eslint . --ext .ts,.tsx",
     "preview": "vite preview",
     "start": "npx http-server ./dist -p 8080 -c-1 --fallback=index.html"
@@ -36,6 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "cpy-cli": "^5.0.0",
     "eslint": "^9.20.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
