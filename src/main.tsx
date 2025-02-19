@@ -23,12 +23,12 @@ root.render(
       future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
     >
       <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={persistor}> */}
-        {/* <HelmetProvider> */}
-        <App />
-        {/* <Toaster /> */}
-        {/* </HelmetProvider> */}
-        {/* </PersistGate> */}
+        <PersistGate loading={null} persistor={persistor}>
+          <HelmetProvider>
+            <App />
+            <Toaster />
+          </HelmetProvider>
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </StrictMode>
