@@ -2,7 +2,7 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "./redux/store";
 import { lazy, useEffect } from "react";
-// import Layout from "./components/Layout";
+import Layout from "./components/Layout";
 import { Route, Routes } from "react-router-dom";
 // import RestrictedRoute from "./components/RestrictedRoute";
 // import PrivateRoute from "./components/PrivateRoute";
@@ -36,20 +36,20 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (!isRefreshUser && isLoggedIn) {
-  //     dispatch(fetchContacts());
-  //   }
-  // }, [dispatch, isRefreshUser, isLoggedIn]);
+  useEffect(() => {
+    if (!isRefreshUser && isLoggedIn) {
+      dispatch(fetchContacts());
+    }
+  }, [dispatch, isRefreshUser, isLoggedIn]);
 
-  if (error)
-    return (
-      <>
-        {/* <Layout> */}
-        <p>Error: {error}</p>
-        {/* </Layout> */}
-      </>
-    );
+  // if (error)
+  //   return (
+  //     <>
+  //       <Layout>
+  //         <p>Error: {error}</p>
+  //       </Layout>
+  //     </>
+  //   );
 
   // if (loading)
   //   return (
@@ -67,12 +67,14 @@ function App() {
         undergoing modifications. <br />
         Please check back soon! 🚧🔧
       </div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      </Layout>
     </>
   );
   // isRefreshUser ? (
