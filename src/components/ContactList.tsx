@@ -5,14 +5,17 @@ import { selectFilter } from "../redux/filters/selectors";
 import { ContactType } from "src/types/types";
 
 const ContactList = () => {
-  const contacts = useSelector(selectContacts) as ContactType[];
-  const statusFilter = useSelector(selectFilter);
+  const contacts = useSelector(selectContacts);
+  const filters = useSelector(selectFilter);
 
-  const filteredContacts = (contacts || []).filter(
-    (contact) =>
-      contact.name &&
-      contact.name.toLowerCase().includes(statusFilter.name.toLowerCase())
-  );
+  const filteredContacts = contacts.filter((contact: ContactType) => {
+    const nameMatches = contact.name
+      .toLowerCase()
+      .includes(filters.name.toLowerCase());
+    const numberMatches = contact.number.includes(filters.number);
+
+    return nameMatches || numberMatches;
+  });
 
   return (
     <>

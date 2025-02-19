@@ -7,7 +7,7 @@ export default function Contacts() {
   return (
     <>
       <DocumentTitle>Contacts</DocumentTitle>
-      <h1>Phonebook</h1>
+      <h1>PHONEBOOK</h1>
       <ContactForm />
       <SearchBox />
       <ContactList />

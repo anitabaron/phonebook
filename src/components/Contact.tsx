@@ -21,7 +21,7 @@ const Contact = ({ id, name, number }: ContactType): JSX.Element => {
     <div className="contact-card">
       <div className="contact-data" key={id} id={id}>
         <h4>{name}</h4>
-        <p>☎ {number}</p>
+        <p>{number}</p>
       </div>
       <button onClick={handleDelete}>Delete</button>
       <ModalConfirm

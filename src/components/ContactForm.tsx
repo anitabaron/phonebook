@@ -39,6 +39,7 @@ const ContactForm = () => {
         contact.number === formattedNumber ||
         contact.number === values.number
     );
+    console.log(`New contact: `, values);
 
     if (contactExists) {
       alert("This contact already exists!");

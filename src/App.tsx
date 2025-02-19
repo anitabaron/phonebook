@@ -57,7 +57,7 @@ function App() {
   if (loading)
     return (
       <>
-        <h1>Phonebook</h1>
+        <h1>PHONEBOOK</h1>
         <p>Loading...</p>
       </>
     );

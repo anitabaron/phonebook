@@ -48,3 +48,8 @@ export interface PrivateRouteProps {
   children: ReactElement;
   redirectPath: string;
 }
+
+export interface FiltersState {
+  name: string;
+  number: string;
+}
