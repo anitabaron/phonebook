@@ -10,7 +10,7 @@ import { refreshUser } from "./redux/auth/operations";
 import { fetchContacts } from "./redux/contacts/operations";
 import { selectIsRefreshUser, selectIsLoggedIn } from "./redux/auth/selectors";
 import type { AppDispatch } from "./redux/store";
-import "./App.css";
+import "./styles.css";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");

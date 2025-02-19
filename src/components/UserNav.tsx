@@ -12,8 +12,7 @@ export default function UserNav() {
   return (
     <>
       <div>
-        Welcome
-        <b>{userName.name}</b>
+        Welcome <b>{userName.name}</b>
       </div>
       <button onClick={handleLogout}>Logout</button>
     </>

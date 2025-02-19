@@ -61,12 +61,18 @@ const ContactForm = () => {
           <div className="form">
             <div className="personData">
               <label htmlFor={nameFieldId}>Name</label>
-              <Field type="text" name="name" id={nameFieldId}></Field>
+              <Field
+                type="text"
+                name="name"
+                placeholder="Enter name"
+                id={nameFieldId}
+              ></Field>
               <ErrorMessage name="name" component="div" className="error" />
               <label htmlFor={numberFieldId}>Number</label>
               <Field
                 type="text"
                 name="number"
+                placeholder="Enter number"
                 id={numberFieldId}
                 maxLength={10}
               ></Field>
