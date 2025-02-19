@@ -14,8 +14,8 @@ import { selectIsRefreshUser, selectIsLoggedIn } from "./redux/auth/selectors";
 
 const HomePage = lazy(() => import("./pages/Home"));
 const ContactsPage = lazy(() => import("./pages/Contacts"));
-// const RegisterPage = lazy(() => import("./pages/Register"));
-// const LoginPage = lazy(() => import("./pages/Login"));
+const RegisterPage = lazy(() => import("./pages/Register"));
+const LoginPage = lazy(() => import("./pages/Login"));
 
 function App() {
   const dispatch: AppDispatch = useDispatch();
@@ -61,18 +61,19 @@ function App() {
 
   return (
     <>
+      <div className="info">
+        <h2>I'm sorry for the Inconvenience!</h2> This website
+        <h3>PHONEBOOK</h3> is currently being updated with TypeScript and is
+        undergoing modifications. <br />
+        Please check back soon! 🚧🔧
+      </div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </>
-
-    // <div className="info">
-    //   <h2>I'm sorry for the Inconvenience!</h2> This website{" "}
-    //   <h3>PHONEBOOK</h3> is currently being updated with TypeScript and is
-    //   undergoing modifications. <br />
-    //   Please check back soon! 🚧🔧
-    // </div>
   );
   // isRefreshUser ? (
   //   <p>refreshing...</p>

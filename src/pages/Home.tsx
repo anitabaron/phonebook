@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <DocumentTitle>Home</DocumentTitle>
-      <h2>Welcome in Phonebook App</h2>
+      <h2>Welcome in PHONEBOOK App</h2>
     </>
   );
 }
