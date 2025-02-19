@@ -3,12 +3,14 @@ import { setNameFilter, setNumberFilter } from "../redux/filters/filtersSlice";
 import { useId } from "react";
 import { selectFilter } from "../redux/filters/selectors";
 import React from "react";
+
 const SearchBox = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
   const searchFieldId = useId();
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setNameFilter(event.target.value.toLowerCase()));
+    dispatch(setNumberFilter(event.target.value));
     console.log("filter: ", event.target.value);
   };
   return (

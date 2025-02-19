@@ -3,6 +3,7 @@ import { register } from "../redux/auth/operations";
 import { useDispatch } from "react-redux";
 import { useId } from "react";
 import * as Yup from "yup";
+import { AppDispatch } from "@redux/store";
 
 interface RegisterFormValues {
   name: string;
@@ -12,11 +13,10 @@ interface RegisterFormValues {
 }
 
 export default function RegisterForm() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const nameId = useId();
   const emailId = useId();
   const passwordId = useId();
-  const passwordConfirmId = useId();
 
   const registerSchema = Yup.object().shape({
     name: Yup.string()
@@ -40,13 +40,13 @@ export default function RegisterForm() {
   ) => {
     console.log("Form values:", values);
     const { name, email, password } = values;
-    // dispatch(
-    //   register({
-    //     name,
-    //     email,
-    //     password,
-    //   })
-    // );
+    dispatch(
+      register({
+        name,
+        email,
+        password,
+      })
+    );
     resetForm();
   };
 
@@ -88,19 +88,6 @@ export default function RegisterForm() {
             id={passwordId}
           />
           <ErrorMessage name="password" component="div" className="error" />
-
-          {/* <label htmlFor={passwordConfirmId}>Confirm password</label>
-          <Field
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm your password"
-            id={passwordConfirmId}
-          /> */}
-          <ErrorMessage
-            name="confirmPassword"
-            component="div"
-            className="error"
-          />
 
           <button type="submit">Register</button>
         </Form>

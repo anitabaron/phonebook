@@ -11,12 +11,14 @@ const initialState: ContactsState = {
 const handlePending = (state: ContactsState) => {
   state.loading = true;
 };
+import { SerializedError } from "@reduxjs/toolkit";
+
 const handleRejected = (
-  state: ContactsState
-  // action: PayloadAction<string | null>
+  state: ContactsState,
+  action: PayloadAction<unknown, string, unknown, SerializedError>
 ) => {
   state.loading = false;
-  // state.error = action.payload;
+  state.error = action.error?.message ?? "An unexpected error occurred";
 };
 
 const contactsSlice = createSlice({
@@ -79,5 +81,4 @@ const contactsSlice = createSlice({
   },
 });
 
-// export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

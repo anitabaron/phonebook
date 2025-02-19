@@ -77,20 +77,3 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-
-// import { createSlice } from "@reduxjs/toolkit";
-
-// const authSlice = createSlice({
-//   name: "auth",
-//   initialState: {
-//     isLoggedIn: false,
-//     token: null,
-//     isRefreshUser: false,
-//     user: { name: null, email: null, password: null },
-//   },
-//   reducers: {},
-//   extraReducers: (builder) => {
-//     // Your extraReducers logic here
-//   },
-// });
-// export const authReducer = authSlice.reducer;

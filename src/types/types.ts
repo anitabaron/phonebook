@@ -9,3 +9,25 @@ export interface ContactsState {
   loading: boolean;
   error: string | null;
 }
+
+export interface LoginValues {
+  email: string;
+  password: string;
+}
+
+export interface RegisterValues {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface ModalConfirmProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  onConfirm: () => void;
+}
+
+export interface RestrictedRouteProps {
+  Component: React.ComponentType;
+  redirectPath: string;
+}

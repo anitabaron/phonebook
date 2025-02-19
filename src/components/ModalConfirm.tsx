@@ -1,6 +1,11 @@
 import Modal from "react-modal";
+import { ModalConfirmProps } from "src/types/types";
 
-export default function ModalConfirm({ isOpen, onRequestClose, onConfirm }) {
+export default function ModalConfirm({
+  isOpen,
+  onRequestClose,
+  onConfirm,
+}: ModalConfirmProps) {
   return (
     <>
       <Modal isOpen={isOpen} onRequestClose={onRequestClose}>

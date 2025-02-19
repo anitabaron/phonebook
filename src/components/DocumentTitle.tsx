@@ -7,8 +7,8 @@ interface DocumentTitleProps {
 
 export default function DocumentTitle({ children }: DocumentTitleProps) {
   return (
-    // <Helmet>
-    <title>{children}</title>
-    // </Helmet>
+    <Helmet>
+      <title>{children}</title>
+    </Helmet>
   );
 }

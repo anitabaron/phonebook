@@ -1,10 +1,11 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { selectContacts } from "../redux/contacts/selectors";
 import { ContactType } from "../types/types";
 import { addContact } from "../redux/contacts/operations";
+import { AppDispatch } from "@redux/store";
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
@@ -21,28 +22,31 @@ const formatNumber = (number: string) => {
 };
 
 const ContactForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const nameFieldId = useId();
   const numberFieldId = useId();
   const contacts = useSelector(selectContacts);
 
   const handleSubmit = (
     values: { name: string; number: string },
-    actions: any
+    actions: FormikHelpers<{ name: string; number: string }>
   ) => {
     const formattedNumber = formatNumber(values.number);
-    (contact: ContactType) =>
-      contact.name === values.name ||
-      contact.phone === formattedNumber ||
-      contact.phone === values.number;
 
-    // if (contactExists) {
-    //   alert("This contact already exists!");
-    //   return;
-    // }
+    const contactExists = contacts.some(
+      (contact: ContactType) =>
+        contact.name.toLowerCase() === values.name.toLowerCase() ||
+        contact.phone === formattedNumber ||
+        contact.phone === values.number
+    );
 
-    //type `any` to change!!
+    if (contactExists) {
+      alert("This contact already exists!");
+      return;
+    }
+
     dispatch(addContact({ name: values.name, number: formattedNumber }) as any);
+
     actions.resetForm();
   };
 
