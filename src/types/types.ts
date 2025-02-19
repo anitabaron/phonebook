@@ -1,13 +1,25 @@
+import { ReactElement, ReactNode } from "react";
+
+export interface DocumentTitleProps {
+  children: ReactNode;
+}
+
 export interface ContactType {
   id: string;
   name: string;
-  phone: string;
+  number: string;
 }
 
 export interface ContactsState {
   items: ContactType[];
   loading: boolean;
   error: string | null;
+}
+
+export interface ContactProps {
+  id: string;
+  name: string;
+  number: string;
 }
 
 export interface LoginValues {
@@ -28,6 +40,11 @@ export interface ModalConfirmProps {
 }
 
 export interface RestrictedRouteProps {
-  Component: React.ComponentType;
+  children: ReactElement;
+  redirectPath: string;
+}
+
+export interface PrivateRouteProps {
+  children: ReactElement;
   redirectPath: string;
 }

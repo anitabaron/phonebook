@@ -1,25 +1,34 @@
+import { ContactType } from "src/types/types";
 import { deleteContact } from "../redux/contacts/operations";
-import { useAppDispatch } from "../redux/hooks/useDispatch";
+import { AppDispatch } from "@redux/store";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import ModalConfirm from "./ModalConfirm";
 
-interface ContactProps {
-  id: string;
-  name: string;
-  number: string;
-}
+const Contact = ({ id, name, number }: ContactType): JSX.Element => {
+  const dispatch = useDispatch<AppDispatch>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-const Contact = ({ id, name, number }: ContactProps): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const handleDelete = () => dispatch(deleteContact(id));
+  const handleDelete = () => {
+    setIsModalOpen(true);
+  };
+  const handleConfirmDelete = () => {
+    dispatch(deleteContact(id));
+    setIsModalOpen(false);
+  };
 
   return (
-    <div>
-      <div className="contact-form">
-        <div className="personData" key={id} id={id}>
-          <h4>{name}</h4>
-          <p>☎ {number}</p>
-        </div>
-        <button onClick={handleDelete}>Delete</button>
+    <div className="contact-card">
+      <div className="contact-data" key={id} id={id}>
+        <h4>{name}</h4>
+        <p>☎ {number}</p>
       </div>
+      <button onClick={handleDelete}>Delete</button>
+      <ModalConfirm
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 };

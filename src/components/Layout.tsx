@@ -1,5 +1,5 @@
-import { Suspense } from "react";
 import Navigation from "./Navigation";
+import { Suspense } from "react";
 
 interface LayoutProps {
   children: React.ReactNode;

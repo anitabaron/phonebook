@@ -11,20 +11,20 @@ const ContactList = () => {
   const filteredContacts = (contacts || []).filter(
     (contact) =>
       contact.name &&
-      contact.name.toLowerCase().includes(statusFilter.toLowerCase())
+      contact.name.toLowerCase().includes(statusFilter.name.toLowerCase())
   );
 
   return (
     <>
       <h2>Contact List:</h2>
       {filteredContacts.length !== 0 ? (
-        <div className="phoneList">
+        <div className="contact-list">
           {filteredContacts.map((contact) => (
             <Contact
               key={contact.id}
               id={contact.id}
               name={contact.name}
-              number={contact.phone}
+              number={contact.number}
             />
           ))}
         </div>

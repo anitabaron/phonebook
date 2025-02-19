@@ -2,8 +2,8 @@ import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { register } from "../redux/auth/operations";
 import { useDispatch } from "react-redux";
 import { useId } from "react";
-import * as Yup from "yup";
 import { AppDispatch } from "@redux/store";
+import * as Yup from "yup";
 
 interface RegisterFormValues {
   name: string;

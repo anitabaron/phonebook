@@ -7,12 +7,22 @@ export default function ModalConfirm({
   onConfirm,
 }: ModalConfirmProps) {
   return (
-    <>
-      <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
-        <h2>Confirm</h2>
-        <button onClick={onConfirm}>Yes, delete</button>
-        <button onClick={onRequestClose}>Cancel</button>
-      </Modal>
-    </>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      className="modal-content"
+      overlayClassName="modal-overlay"
+    >
+      <h2>Are you sure?</h2>
+      <p>This action cannot be undone.</p>
+      <div className="modal-buttons">
+        <button onClick={onConfirm} className="confirm-button">
+          Yes, delete
+        </button>
+        <button onClick={onRequestClose} className="cancel-button">
+          Cancel
+        </button>
+      </div>
+    </Modal>
   );
 }

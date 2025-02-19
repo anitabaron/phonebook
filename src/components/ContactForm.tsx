@@ -1,11 +1,11 @@
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import { useId } from "react";
-import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { selectContacts } from "../redux/contacts/selectors";
 import { ContactType } from "../types/types";
 import { addContact } from "../redux/contacts/operations";
 import { AppDispatch } from "@redux/store";
+import * as Yup from "yup";
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
@@ -36,8 +36,8 @@ const ContactForm = () => {
     const contactExists = contacts.some(
       (contact: ContactType) =>
         contact.name.toLowerCase() === values.name.toLowerCase() ||
-        contact.phone === formattedNumber ||
-        contact.phone === values.number
+        contact.number === formattedNumber ||
+        contact.number === values.number
     );
 
     if (contactExists) {

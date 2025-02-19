@@ -1,9 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { ReactNode } from "react";
-
-interface DocumentTitleProps {
-  children: ReactNode;
-}
+import { DocumentTitleProps } from "src/types/types";
 
 export default function DocumentTitle({ children }: DocumentTitleProps) {
   return (

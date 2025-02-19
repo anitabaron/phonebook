@@ -2,29 +2,40 @@ import { useDispatch, useSelector } from "react-redux";
 import { setNameFilter, setNumberFilter } from "../redux/filters/filtersSlice";
 import { useId } from "react";
 import { selectFilter } from "../redux/filters/selectors";
-import React from "react";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
   const searchFieldId = useId();
+
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setNameFilter(event.target.value.toLowerCase()));
-    dispatch(setNumberFilter(event.target.value));
-    console.log("filter: ", event.target.value);
+    const query = event.target.value.toLowerCase();
+
+    if (/^\d+$/.test(query)) {
+      dispatch(setNumberFilter(query));
+      dispatch(setNameFilter(""));
+    } else {
+      dispatch(setNameFilter(query));
+      dispatch(setNumberFilter(""));
+    }
+
+    console.log("Filter updated:", {
+      name: filter.name,
+      number: filter.number,
+    });
   };
+
   return (
     <>
       <h2>Search:</h2>
       <div className="search-bar">
-        <label htmlFor={searchFieldId}></label>
-        <label></label>
-        Find contacts by name
+        <label htmlFor={searchFieldId}>Find contacts by name or number</label>
         <input
           type="text"
           onChange={handleFilterChange}
-          value={filter}
+          value={filter.name || filter.number}
           id={searchFieldId}
+          placeholder="Search by name or number..."
         />
       </div>
     </>

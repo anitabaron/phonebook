@@ -2,9 +2,9 @@ import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { useDispatch } from "react-redux";
 import { logIn } from "../redux/auth/operations";
 import { useId } from "react";
-import * as Yup from "yup";
 import { AppDispatch } from "@redux/store";
 import { LoginValues } from "src/types/types";
+import * as Yup from "yup";
 
 export default function LoginForm() {
   const dispatch = useDispatch<AppDispatch>();
