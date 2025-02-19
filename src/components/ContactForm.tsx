@@ -13,12 +13,12 @@ const userSchema = Yup.object().shape({
     .max(50, "Name is too long")
     .required("Required"),
   number: Yup.string()
-    .matches(/^\d{10}$/, "Number must be exactly 10 digits")
+    .matches(/^\d{10}$/, "Number must be exactly 10 digits, only numbers")
     .required("Required"),
 });
 
 const formatNumber = (number: string) => {
-  return `${number.slice(0, 3)}-${number.slice(3, 6)}-${number.slice(6)}`;
+  return `${number.slice(0, 3)} ${number.slice(3, 6)} ${number.slice(6)}`;
 };
 
 const ContactForm = () => {

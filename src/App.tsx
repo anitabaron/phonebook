@@ -66,13 +66,13 @@ function App() {
     <p>refreshing...</p>
   ) : (
     <>
-      <div className="info">
+      {/* <div className="info">
         <h2>I'm sorry for the Inconvenience!</h2> This website
         <h3>PHONEBOOK</h3> is currently being updated with TypeScript and is
         undergoing modifications. <br />
         Please check back soon! 🚧🔧
         <hr></hr>
-      </div>
+      </div> */}
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />

@@ -1,4 +1,4 @@
-/* Root Variables */
+/* Root */
 :root {
   line-height: 1.5;
   font-weight: 400;
@@ -7,6 +7,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* General Styles */
@@ -45,7 +51,7 @@ body {
 /* Navigation */
 .navi {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   gap: 12px;
@@ -60,6 +66,22 @@ body {
 .navi a:hover {
   background: rgba(38, 96, 109, 0.1);
   transform: translateY(-2px);
+}
+
+.navi button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 10px;
+  margin: 0;
+}
+
+.navi button:hover {
+  background-color: rgba(38, 96, 109, 0.1);
+  color: #f79950;
+  border: none;
+  padding: 10px;
+  margin: 0;
 }
 
 /* Forms */
@@ -141,7 +163,7 @@ button,
 }
 
 button {
-  background-color: #1a1a1a;
+  background-color: #363636;
   color: #ffffff;
 }
 
@@ -266,7 +288,6 @@ a:hover,
 .contact-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 10px;
 }
 
@@ -355,22 +376,6 @@ h6 {
   color: #26606d;
 }
 
-/* Links */
-a,
-.auth-link {
-  font-weight: 500;
-  color: #26606d;
-  text-decoration: none;
-  transition: color 0.2s ease, text-decoration 0.2s ease, transform 0.2s;
-}
-
-a:hover,
-.auth-link:hover {
-  color: #f79950;
-  text-decoration: underline;
-  transform: translateY(-1px);
-}
-
 /* Other */
 .card {
   padding: 2em;
@@ -384,6 +389,7 @@ a:hover,
 
 .error {
   color: red;
+  font-size: 14px;
 }
 
 /* Responsive Design */
@@ -409,7 +415,12 @@ a:hover,
     justify-content: center;
   }
 
-  .contact-card {
-    width: 100%;
+  .navi {
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .navi-welcome {
+    display: none;
   }
 }
